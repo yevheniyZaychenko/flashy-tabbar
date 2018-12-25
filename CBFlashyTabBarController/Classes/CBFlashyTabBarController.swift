@@ -15,9 +15,9 @@ open class CBFlashyTabBarController: UITabBarController {
     fileprivate var shouldSelectOnTabBar = true
 
     open override var selectedViewController: UIViewController? {
-        willSet {
+        didSet {
             guard shouldSelectOnTabBar,
-                  let newValue = newValue else {
+                  let newValue = selectedViewController else {
                 shouldSelectOnTabBar = true
                 return
             }
@@ -29,7 +29,7 @@ open class CBFlashyTabBarController: UITabBarController {
     }
 
     open override var selectedIndex: Int {
-        willSet {
+        didSet {
             guard shouldSelectOnTabBar else {
                 shouldSelectOnTabBar = true
                 return

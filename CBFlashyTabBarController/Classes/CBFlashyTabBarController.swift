@@ -10,6 +10,8 @@ import UIKit
 
 open class CBFlashyTabBarController: UITabBarController {
 
+    public var defaultHeight: CGFloat = 74
+    
     fileprivate var shouldSelectOnTabBar = true
 
     open override var selectedViewController: UIViewController? {
@@ -50,7 +52,7 @@ open class CBFlashyTabBarController: UITabBarController {
     }
 
     private var barHeight: CGFloat {
-        var height: CGFloat = 74
+        var height: CGFloat = defaultHeight
         if #available(iOS 11.0, *) {
             height += view.safeAreaInsets.bottom
         }

@@ -53,7 +53,7 @@ class CBTabBarButton: UIControl {
 
     var item: UITabBarItem? {
         didSet {
-            tabImage.image = item?.image?.withRenderingMode(.alwaysTemplate)
+            tabImage.image = item?.image
             tabLabel.attributedText = attributedText(fortitle: item?.title)
         }
     }

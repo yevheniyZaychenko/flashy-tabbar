@@ -14,10 +14,18 @@ open class CBFlashyTabBarController: UITabBarController {
     
     fileprivate var shouldSelectOnTabBar = true
 
+    public func select(viewController: UIViewController?) {
+        
+        super.selectedViewController = viewController
+        if let tabBar = tabBar as? CBFlashyTabBar {
+            tabBar.reloadViews()
+        }
+        
+    }
     open override var selectedViewController: UIViewController? {
-        didSet {
+        willSet {
             guard shouldSelectOnTabBar,
-                  let newValue = selectedViewController else {
+                  let newValue = newValue else {
                 shouldSelectOnTabBar = true
                 return
             }
@@ -29,7 +37,7 @@ open class CBFlashyTabBarController: UITabBarController {
     }
 
     open override var selectedIndex: Int {
-        didSet {
+        willSet {
             guard shouldSelectOnTabBar else {
                 shouldSelectOnTabBar = true
                 return

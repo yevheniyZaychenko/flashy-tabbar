@@ -87,7 +87,7 @@ open class CBFlashyTabBar: UITabBar {
         }
     }
 
-    private func reloadViews() {
+    public func reloadViews() {
         subviews.filter { String(describing: type(of: $0)) == "UITabBarButton" }.forEach { $0.removeFromSuperview() }
         buttons.forEach { $0.removeFromSuperview()}
         buttons = items?.map { self.button(forItem: $0) } ?? []

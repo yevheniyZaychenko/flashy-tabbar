@@ -30,6 +30,8 @@ class ViewController: UIViewController {
         let tabBarController = CBFlashyTabBarController()
         tabBarController.viewControllers = [eventsVC, searchVC, activityVC, settingsVC]
         self.present(tabBarController, animated: true, completion: nil)
+        
+        tabBarController.select(viewController: settingsVC)
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {

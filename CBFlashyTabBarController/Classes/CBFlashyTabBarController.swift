@@ -16,11 +16,13 @@ open class CBFlashyTabBarController: UITabBarController {
 
     public func select(viewController: UIViewController?) {
         
-        super.selectedViewController = viewController
-        if let tabBar = tabBar as? CBFlashyTabBar {
-            tabBar.reloadViews()
+        if let vc = viewController {
+            
+            super.selectedViewController = viewController
+            if let tabBar = tabBar as? CBFlashyTabBar {
+                tabBar.reloadViews()
+            }
         }
-        
     }
     open override var selectedViewController: UIViewController? {
         willSet {
@@ -91,7 +93,7 @@ open class CBFlashyTabBarController: UITabBarController {
         guard let idx = tabBar.items?.index(of: item) else {
             return
         }
-        if let controller = viewControllers?[idx] {
+        if let controller = viewControllers?[idx], (delegate?.tabBarController?(self, shouldSelect: controller) ?? true ) {
             shouldSelectOnTabBar = false
             selectedIndex = idx
             delegate?.tabBarController?(self, didSelect: controller)

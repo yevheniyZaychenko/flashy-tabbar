@@ -16,12 +16,9 @@ open class CBFlashyTabBarController: UITabBarController {
 
     public func select(viewController: UIViewController?) {
         
-        if let vc = viewController {
-            
-            super.selectedViewController = viewController
-            if let tabBar = tabBar as? CBFlashyTabBar {
-                tabBar.reloadViews()
-            }
+        super.selectedViewController = viewController
+        if let tabBar = tabBar as? CBFlashyTabBar {
+            tabBar.reloadViews()
         }
     }
     open override var selectedViewController: UIViewController? {
